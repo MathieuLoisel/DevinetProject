@@ -25,7 +25,7 @@ public interface CategoryDao {
     void insert(Category... categories);
 
     @Query("SELECT * FROM Category")
-    LiveData<List<Word>> get();
+    LiveData<List<Category>> get();
 
     @Update
     void update(Category ... categories);
