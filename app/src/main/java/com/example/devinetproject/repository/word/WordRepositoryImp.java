@@ -13,6 +13,8 @@ import java.util.List;
 /**
  * Classe implémentant l'interface WordRepository. Permet à la couche supérieure (VM) de faire des
  * appels à la BDD tout en repsectant la séparations des couhces de l'architexture component
+ *
+ * Classe permettant la communication entre la DAL et le ViewModel
  */
 public class WordRepositoryImp implements WordRepository{
 
