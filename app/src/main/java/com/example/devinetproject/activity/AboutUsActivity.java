@@ -11,6 +11,6 @@ public class AboutUsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_a_propos);
+        setContentView(R.layout.activity_about_us);
     }
 }
