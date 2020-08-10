@@ -4,7 +4,6 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.devinetproject.R;
 import com.example.devinetproject.bo.Category;
 import com.example.devinetproject.dal.AppDatabase;
 import com.example.devinetproject.dal.CategoryDao;
