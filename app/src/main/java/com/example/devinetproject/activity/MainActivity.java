@@ -24,17 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Stetho.initializeWithDefaults(this);
 
         final WordVm wordVm = new ViewModelProvider(this).get(WordVm.class);
-        CategoryVm categoryVm = new ViewModelProvider(this).get(CategoryVm.class);
-        Category category = new Category("noms");
-        categoryVm.insert(category);
-
-        categoryVm.getByName("noms").observe(this, new Observer<Category>() {
-            @Override
-            public void onChanged(Category category) {
-                Word word = new Word("/img", "guessword", "proposition", category);
-                wordVm.insert(word);
-            }
-        });
+        final CategoryVm categoryVm = new ViewModelProvider(this).get(CategoryVm.class);
     }
 
     protected boolean onCreateOptions(Menu menu) {
