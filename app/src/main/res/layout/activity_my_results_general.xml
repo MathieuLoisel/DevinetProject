@@ -31,7 +31,6 @@
             />
 
         <!-- DEBUT PIE CHART -->
-
         <!-- ProgressBar that represents a total of 100% -->
         <ProgressBar
             android:id="@+id/background_progressbar"
