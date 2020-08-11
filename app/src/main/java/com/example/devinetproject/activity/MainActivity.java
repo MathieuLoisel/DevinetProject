@@ -2,8 +2,10 @@ package com.example.devinetproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 import com.example.devinetproject.R;
 import com.facebook.stetho.Stetho;
@@ -21,5 +23,26 @@ public class MainActivity extends AppCompatActivity {
     {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    public void onClickPlay(View view)
+    {
+        Intent intent = new Intent(this,PlayActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickSubmit(View view) {
+        Intent intent = new Intent(this,SubmitActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickMyResults(View view) {
+        Intent intent = new Intent(this,MyResultsActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickQuit(View view) {
+        Intent intent = new Intent(this,SubmitActivity.class);
+        startActivity(intent);
     }
 }
