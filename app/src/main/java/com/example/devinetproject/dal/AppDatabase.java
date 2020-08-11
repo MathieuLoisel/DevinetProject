@@ -6,9 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.devinetproject.bo.Category;
+import com.example.devinetproject.bo.CategoryConverter;
 import com.example.devinetproject.bo.Word;
 
 import java.util.concurrent.ExecutorService;
@@ -17,7 +19,8 @@ import java.util.concurrent.Executors;
 /**
  * Représente la BDD de l'application
  */
-@Database(entities = {Word.class, Category.class}, version = 1)
+@Database(entities = {Word.class, Category.class}, exportSchema = false, version = 1)
+@TypeConverters(CategoryConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
 
     //Permet de n'avoir qu'une connexion à la BDD

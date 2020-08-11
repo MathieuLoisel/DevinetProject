@@ -1,6 +1,7 @@
 package com.example.devinetproject.bo;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /**
@@ -11,34 +12,39 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Category {
     @PrimaryKey(autoGenerate = true)
-    private int id;
-    private String nom;
+    private int idCategory;
+    private String name;
+    private int idExcel;
 
+    public Category() {
+    }
+
+    @Ignore
     public Category(String nom) {
-        this.nom = nom;
+        this.name = nom;
     }
 
-    public int getId() {
-        return id;
+    public int getIdCategory() {
+        return idCategory;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "Category{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
+                "id=" + idCategory +
+                ", nom='" + name + '\'' +
                 '}';
     }
 }

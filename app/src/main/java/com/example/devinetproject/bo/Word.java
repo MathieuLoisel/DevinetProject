@@ -1,7 +1,10 @@
 package com.example.devinetproject.bo;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /**
@@ -13,20 +16,25 @@ import androidx.room.PrimaryKey;
 
 //TODO: Trouver comment utiliser Room avec des objets (ici pour stocker l'attribut category)
 
-@Entity(foreignKeys = @ForeignKey(entity = Word.class,
-                                    parentColumns = "category",
-                                    childColumns = "id",
+@Entity(foreignKeys = @ForeignKey(entity = Category.class,
+                                    parentColumns = "idCategory",
+                                    childColumns = "category",
                                     onDelete = ForeignKey.CASCADE))
 public class Word {
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "idWord")
     private int id;
-    private String img;
+    private String image;
     private String guessWord;
     private String proposal;
     private Category category;
 
+    public Word() {
+    }
+
+    @Ignore
     public Word(String img, String guessWord, String proposal, Category category) {
-        this.img = img;
+        this.image = img;
         this.guessWord = guessWord;
         this.proposal = proposal;
         this.category = category;
@@ -40,12 +48,12 @@ public class Word {
         this.id = id;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getGuessWord() {
@@ -76,7 +84,7 @@ public class Word {
     public String toString() {
         return "Word{" +
                 "id=" + id +
-                ", img='" + img + '\'' +
+                ", img='" + image + '\'' +
                 ", word='" + guessWord + '\'' +
                 ", proposal='" + proposal + '\'' +
                 ", category=" + category +

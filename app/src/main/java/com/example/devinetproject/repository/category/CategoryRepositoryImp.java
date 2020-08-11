@@ -5,12 +5,13 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.devinetproject.bo.Category;
+import com.example.devinetproject.bo.CategoryWithWords;
 import com.example.devinetproject.dal.AppDatabase;
 import com.example.devinetproject.dal.CategoryDao;
 
 import java.util.List;
 
-public class CategoryRepositoryImp implements CategoryRepository{
+public class CategoryRepositoryImp implements ICategoryRepository {
 
     AppDatabase bdd;
     CategoryDao categoryDao;
@@ -23,8 +24,8 @@ public class CategoryRepositoryImp implements CategoryRepository{
     @Override
     public void insert(final Category... categories) {
         AppDatabase.databaseWriterExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
+                @Override
+                public void run() {
                 categoryDao.insert(categories);
             }
         });
@@ -33,6 +34,16 @@ public class CategoryRepositoryImp implements CategoryRepository{
     @Override
     public LiveData<List<Category>> get() {
         return categoryDao.get();
+    }
+
+    @Override
+    public LiveData<List<CategoryWithWords>> getCategoryWithWords() {
+        return categoryDao.getCategoryWithWords();
+    }
+
+    @Override
+    public LiveData<Category> getByName(String name) {
+        return categoryDao.getByName(name);
     }
 
     @Override
