@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 
 import com.example.devinetproject.R;
 import com.example.devinetproject.bo.Category;
@@ -30,5 +32,26 @@ public class MainActivity extends AppCompatActivity {
     protected boolean onCreateOptions(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    public void onClickPlay(View view)
+    {
+        Intent intent = new Intent(this,PlayActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickSubmit(View view) {
+        Intent intent = new Intent(this,SubmitActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickMyResults(View view) {
+        Intent intent = new Intent(this,MyResultsActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickQuit(View view) {
+        Intent intent = new Intent(this,SubmitActivity.class);
+        startActivity(intent);
     }
 }
