@@ -1,6 +1,7 @@
 package com.example.devinetproject.repository.word;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
@@ -19,10 +20,9 @@ import java.util.List;
 public class WordRepositoryImp implements WordRepository{
 
     private WordDao wordDao;
-    private LiveData<List<Word>> words;
 
-    public WordRepositoryImp(Application application){
-        AppDatabase bdd = AppDatabase.getInstance(application);
+    public WordRepositoryImp(Context context){
+        AppDatabase bdd = AppDatabase.getInstance(context);
         wordDao = bdd.getWordDao();
     }
 

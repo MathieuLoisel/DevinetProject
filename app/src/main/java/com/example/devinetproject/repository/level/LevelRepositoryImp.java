@@ -1,6 +1,6 @@
 package com.example.devinetproject.repository.level;
 
-import android.app.Application;
+import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
@@ -12,11 +12,10 @@ import java.util.List;
 
 public class LevelRepositoryImp implements LevelRepository {
 
-    AppDatabase bdd;
     LevelDao levelDao;
 
-    public LevelRepositoryImp(Application application) {
-        bdd = AppDatabase.getInstance(application);
+    public LevelRepositoryImp(Context context) {
+        AppDatabase bdd = AppDatabase.getInstance(context);
         levelDao = bdd.getLevelDao();
     }
 

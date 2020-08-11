@@ -1,6 +1,6 @@
 package com.example.devinetproject.repository.category;
 
-import android.app.Application;
+import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
@@ -12,11 +12,10 @@ import java.util.List;
 
 public class CategoryRepositoryImp implements CategoryRepository {
 
-    AppDatabase bdd;
     CategoryDao categoryDao;
 
-    public CategoryRepositoryImp(Application application) {
-        bdd = AppDatabase.getInstance(application);
+    public CategoryRepositoryImp(Context context) {
+        AppDatabase bdd = AppDatabase.getInstance(context);
         categoryDao = bdd.getCategoryDao();
     }
 
