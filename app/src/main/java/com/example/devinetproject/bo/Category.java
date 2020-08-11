@@ -6,15 +6,14 @@ import androidx.room.PrimaryKey;
 
 /**
  * Cette classe représnete une catégorie de mot.
- * La catégorie défini la taille du mot (mot de 4 lettres, mot de 5 lettres, etc...)
+ * La catégorie définit un theme regroupant des mots (légumes, fruits, etc...)
  */
 
 @Entity
 public class Category {
     @PrimaryKey(autoGenerate = true)
-    private int idCategory;
+    private int id;
     private String name;
-    private int idExcel;
 
     public Category() {
     }
@@ -24,12 +23,12 @@ public class Category {
         this.name = nom;
     }
 
-    public int getIdCategory() {
-        return idCategory;
+    public int getId() {
+        return id;
     }
 
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -43,7 +42,7 @@ public class Category {
     @Override
     public String toString() {
         return "Category{" +
-                "id=" + idCategory +
+                "id=" + id +
                 ", nom='" + name + '\'' +
                 '}';
     }

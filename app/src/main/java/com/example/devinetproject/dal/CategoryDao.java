@@ -6,12 +6,9 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Transaction;
 import androidx.room.Update;
 
 import com.example.devinetproject.bo.Category;
-import com.example.devinetproject.bo.CategoryWithWords;
-import com.example.devinetproject.bo.Word;
 
 import java.util.List;
 
@@ -29,12 +26,11 @@ public interface CategoryDao {
     @Query("SELECT * FROM Category")
     LiveData<List<Category>> get();
 
-    @Transaction
-    @Query("SELECT * FROM Category")
-    LiveData<List<CategoryWithWords>> getCategoryWithWords();
-
     @Query("SELECT * FROM Category WHERE name LIKE :name")
     LiveData<Category> getByName(String name);
+
+    @Query("SELECT * FROM Category WHERE id = :id")
+    LiveData<Category> getById(int id);
 
     @Update
     void update(Category ... categories);
@@ -44,4 +40,6 @@ public interface CategoryDao {
 
     @Query("DELETE FROM Category")
     void deleteAll();
+
 }
+

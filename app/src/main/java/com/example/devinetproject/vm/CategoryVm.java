@@ -7,8 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.devinetproject.bo.Category;
-import com.example.devinetproject.bo.CategoryWithWords;
-import com.example.devinetproject.repository.category.ICategoryRepository;
+import com.example.devinetproject.repository.category.CategoryRepository;
 import com.example.devinetproject.repository.category.CategoryRepositoryImp;
 
 import java.util.List;
@@ -22,42 +21,45 @@ public class CategoryVm extends AndroidViewModel {
      * Permet de n'avoir qu'un seul observateur pour toute l'application
      */
     LiveData<List<Category>> observer;
-    LiveData<Category> observeByName;
-    ICategoryRepository ICategoryRepository;
+    LiveData<Category> observerByName;
+    LiveData<Category> observerById;
+    CategoryRepository CategoryRepository;
 
     public CategoryVm(@NonNull Application application) {
         super(application);
-        ICategoryRepository = new CategoryRepositoryImp(application);
-        observer = ICategoryRepository.get();
+        CategoryRepository = new CategoryRepositoryImp(application);
+        observer = CategoryRepository.get();
     }
 
     public void insert(Category ... categories){
-        ICategoryRepository.insert(categories);
+        CategoryRepository.insert(categories);
     }
 
     public LiveData<List<Category>> get(){
         return observer;
     }
 
-    public LiveData<List<CategoryWithWords>> getCategoryWithWords(){
-        return ICategoryRepository.getCategoryWithWords();
+    public LiveData<Category> getByName(String name){
+        observerByName = CategoryRepository.getByName(name);
+        return observerByName;
     }
 
-    public LiveData<Category> getByName(String name){
-        observeByName = ICategoryRepository.getByName(name);
-        return observeByName;
+    public LiveData<Category> getById(int id){
+        observerById = CategoryRepository.getById(id);
+        return observerById;
+
     }
 
     public void update(Category ... categories){
-        ICategoryRepository.update(categories);
+        CategoryRepository.update(categories);
     }
 
     public void delete(Category ... categories){
-        ICategoryRepository.delete(categories);
+        CategoryRepository.delete(categories);
     }
 
     public void deleteAll(){
-        ICategoryRepository.deleteAll();
+        CategoryRepository.deleteAll();
     }
 
 
