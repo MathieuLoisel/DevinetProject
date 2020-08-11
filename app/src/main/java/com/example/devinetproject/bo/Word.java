@@ -1,7 +1,6 @@
 package com.example.devinetproject.bo;
 
 import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
@@ -14,12 +13,16 @@ import androidx.room.PrimaryKey;
  * du mot.
  */
 
-//TODO: Trouver comment utiliser Room avec des objets (ici pour stocker l'attribut category)
-
-@Entity(foreignKeys = @ForeignKey(entity = Category.class,
-                                    parentColumns = "idCategory",
-                                    childColumns = "category",
-                                    onDelete = ForeignKey.CASCADE))
+@Entity(foreignKeys = {
+        @ForeignKey(entity = Category.class,
+                parentColumns = "id",
+                childColumns = "idCategory",
+                onDelete = ForeignKey.CASCADE),
+        @ForeignKey(entity = Level.class,
+                parentColumns = "id",
+                childColumns = "idLevel",
+                onDelete = ForeignKey.CASCADE)
+})
 public class Word {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "idWord")
@@ -27,17 +30,19 @@ public class Word {
     private String image;
     private String guessWord;
     private String proposal;
-    private Category category;
+    private int idCategory;
+    private int idLevel;
 
     public Word() {
     }
 
     @Ignore
-    public Word(String img, String guessWord, String proposal, Category category) {
-        this.image = img;
+    public Word(String image, String guessWord, String proposal, int idCategory, int idLevel) {
+        this.image = image;
         this.guessWord = guessWord;
         this.proposal = proposal;
-        this.category = category;
+        this.idCategory = idCategory;
+        this.idLevel = idLevel;
     }
 
     public int getId() {
@@ -72,22 +77,31 @@ public class Word {
         this.proposal = proposal;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getIdCategory() {
+        return idCategory;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
+    }
+
+    public int getIdLevel() {
+        return idLevel;
+    }
+
+    public void setIdLevel(int idLevel) {
+        this.idLevel = idLevel;
     }
 
     @Override
     public String toString() {
         return "Word{" +
                 "id=" + id +
-                ", img='" + image + '\'' +
-                ", word='" + guessWord + '\'' +
+                ", image='" + image + '\'' +
+                ", guessWord='" + guessWord + '\'' +
                 ", proposal='" + proposal + '\'' +
-                ", category=" + category +
+                ", idCategory=" + idCategory +
+                ", idLevel=" + idLevel +
                 '}';
     }
 }
