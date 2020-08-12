@@ -23,14 +23,15 @@
         <activity android:name=".activity.FindTheWordActivity" />
         <activity android:name=".activity.SelectListActivity" />
         <activity android:name=".activity.SelectLevelActivity" />
-        <activity android:name=".activity.MyResultsDetailsActivity" />
+        <activity android:name=".activity.MyResultsDetailsActivity" >
+
+
+        </activity>
         <activity android:name=".activity.MyResultsActivity" />
         <activity android:name=".activity.MyResultsGeneralActivity" >
         </activity>
-        <activity android:name=".activity.SubmitActivity" >
+        <activity android:name=".activity.SubmitActivity" />
 
-
-        </activity>
         <activity android:name=".activity.SettingsActivity" />
         <activity android:name=".activity.AboutUsActivity" />
         <activity android:name=".activity.MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar">

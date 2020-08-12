@@ -25,6 +25,7 @@ public class SelectListActivity extends AppCompatActivity {
     private CategoryVm categoryVM = null;
     private ListView categoryList = null;
     private List<Category> categories = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

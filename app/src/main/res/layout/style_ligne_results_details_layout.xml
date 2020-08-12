@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_results_details"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_results_details_proposition"
+        app:layout_constraintEnd_toStartOf="@id/tv_results_details_word_to_guess"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_marginTop="10dp"
+        android:contentDescription="Image which illustrate the word to guess"
+        />
+
+    <TextView
+        android:id="@+id/tv_results_details_word_to_guess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/iv_results_details"
+        app:layout_constraintTop_toTopOf="@id/iv_results_details"
+        app:layout_constraintBottom_toTopOf="@id/tv_results_details_proposition"
+        android:text="Mot à deviner : "
+        android:layout_marginLeft="50dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_results_details_proposition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/iv_results_details"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/iv_results_details"
+        android:text="Proposition : "
+        android:layout_marginLeft="50dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_results_details_last_proposition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/iv_results_details"
+        app:layout_constraintTop_toBottomOf="@id/tv_results_details_proposition"
+        app:layout_constraintBottom_toBottomOf="@id/iv_results_details"
+        android:text="Dernière proposition"
+        android:layout_marginLeft="50dp"
+        />
+    <CheckBox
+        android:id="@+id/cb_results_details_is_checked"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/tv_results_details_proposition"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/iv_results_details"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
