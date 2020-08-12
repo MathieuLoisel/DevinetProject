@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.devinetproject.R;
-import com.example.devinetproject.activity.MyResultsGeneralActivity;
 import com.example.devinetproject.bo.Level;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class LevelAdapter extends ArrayAdapter<Level> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        if (convertView == null){
+        if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.style_list_results_general, parent, false);
         }
