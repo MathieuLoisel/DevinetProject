@@ -17,4 +17,5 @@ public interface WordRepository {
     void update(Word ... words);
     void delete(Word ... words);
     void deleteAll();
+    LiveData<List<Word>> getByLevel(int idLevel);
 }
