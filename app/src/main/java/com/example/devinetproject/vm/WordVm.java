@@ -20,12 +20,12 @@ public class WordVm extends AndroidViewModel {
      * Permet de n'avoir qu'un seul observateur pour toute l'application
      */
     private LiveData<List<Word>> observer;
-    private WordRepository WordRepository;
+    private WordRepository wordRepository;
 
     public WordVm(@NonNull Application application) {
         super(application);
-        WordRepository = new WordRepositoryImp(application);
-        observer = WordRepository.get();
+        wordRepository = new WordRepositoryImp(application);
+        observer = wordRepository.get();
     }
 
     public LiveData<List<Word>> get(){
@@ -33,18 +33,22 @@ public class WordVm extends AndroidViewModel {
     }
 
     public void insert(Word ... words){
-        WordRepository.insert(words);
+        wordRepository.insert(words);
     }
 
     public void update(Word ... words){
-        WordRepository.update(words);
+        wordRepository.update(words);
     }
 
     public void delete(Word ... words){
-        WordRepository.delete(words);
+        wordRepository.delete(words);
     }
 
     public void deleteAll(){
-        WordRepository.deleteAll();
+        wordRepository.deleteAll();
+    }
+
+    public LiveData<List<Word>> getByLevel(int idLevel){
+        return wordRepository.getByLevel(idLevel);
     }
 }

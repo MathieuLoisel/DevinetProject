@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.PlayActivity">
+    tools:context=".activity.PlayActivity"
+    android:id="@+id/layout_play"
+    >
 
     <ImageView
         android:id="@+id/iv_photo"
@@ -16,6 +18,17 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="40dp"
         android:contentDescription="Image which illustrate the word to guess"
+        />
+
+    <ImageButton
+        android:id="@+id/ibtn_erase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/iv_photo"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="50dp"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:onClick="onClickErase"
         />
 
     <ImageButton

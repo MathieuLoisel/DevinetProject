@@ -8,6 +8,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.devinetproject.bo.Level;
 import com.example.devinetproject.bo.Word;
 
 import java.util.List;
@@ -34,4 +35,7 @@ public interface WordDao {
 
     @Query("DELETE FROM Word")
     void deleteAll();
+
+    @Query("SELECT * FROM Word WHERE idLevel = :idLevel")
+    LiveData<List<Word>> getByLevel(int idLevel);
 }

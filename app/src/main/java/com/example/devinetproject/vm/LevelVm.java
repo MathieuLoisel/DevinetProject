@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.devinetproject.bo.Level;
+import com.example.devinetproject.bo.Word;
 import com.example.devinetproject.repository.level.LevelRepository;
 import com.example.devinetproject.repository.level.LevelRepositoryImp;
 
