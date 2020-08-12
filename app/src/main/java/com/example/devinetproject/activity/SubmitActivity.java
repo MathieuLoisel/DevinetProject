@@ -29,12 +29,13 @@ public class SubmitActivity extends AppCompatActivity {
     public static final int RESULT_LOAD_IMAGE = 2;
     public static final int RESULT_ALLOW_PERMISSION = 3;
     private Intent dataIntent;
-    private ImageView imageSubmit = findViewById(R.id.iv_photo);
+    private ImageView imageSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit);
+        imageSubmit = findViewById(R.id.iv_photo);
     }
 
     public void onClickSubmitNewWord(View view) {

@@ -19,6 +19,7 @@ import com.example.devinetproject.vm.LevelVm;
 
 import java.util.List;
 
+
 public class MyResultsGeneralActivity extends AppCompatActivity {
 
     private ListView listLevel;
