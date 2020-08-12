@@ -9,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PlayActivity" android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
-        <activity android:name=".activity.FindTheWordActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.SelectListActivity" android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".activity.PlayActivity"></activity>
+        <activity android:name=".activity.FindTheWordActivity" />
+        <activity android:name=".activity.SelectListActivity" />
+        <activity android:name=".activity.SelectLevelActivity" />
+        <activity android:name=".activity.MyResultsDetailsActivity" />
+        <activity android:name=".activity.MyResultsActivity" />
+        <activity android:name=".activity.MyResultsGeneralActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SelectLevelActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.MyResultsDetailsActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.MyResultsActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.MyResultsGeneralActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.SubmitActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.SettingsActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.AboutUsActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.SubmitActivity" />
+        <activity android:name=".activity.SettingsActivity" />
+        <activity android:name=".activity.AboutUsActivity" />
         <activity android:name=".activity.MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar">
 
         </activity>
