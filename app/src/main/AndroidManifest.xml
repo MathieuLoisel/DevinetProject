@@ -20,7 +20,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".activity.FindTheWordActivity" />
         <activity android:name=".activity.SelectListActivity" />
         <activity android:name=".activity.SelectLevelActivity" />
         <activity android:name=".activity.MyResultsDetailsActivity" >

@@ -43,5 +43,21 @@ public class MyResultsGeneralActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        LevelVm levelVm = new ViewModelProvider(this).get(LevelVm.class);
+        LiveData<List<Level>> observer = levelVm.get();
+
+        observer.observe(this, new Observer<List<Level>>() {
+            @Override
+            public void onChanged(List<Level> levels) {
+                LevelAdapter levelAdapter = new LevelAdapter(MyResultsGeneralActivity.this, R.layout.style_list_results_general, levels);
+                listLevel.setAdapter(levelAdapter);
+            }
+        });
+    }
+
 
 }
