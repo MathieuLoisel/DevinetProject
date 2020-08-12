@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,9 +29,9 @@ public class PlayActivity extends AppCompatActivity {
         ConstraintLayout layout = findViewById(R.id.layout_play);
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.clone(layout);
-
         constraintSet.connect(lettre1.getId(), ConstraintSet.TOP, layout.getId(), ConstraintSet.TOP, 18);
         constraintSet.connect(lettre1.getId(), ConstraintSet.LEFT, layout.getId(), ConstraintSet.LEFT, 18);
+        //constraintSet.createHorizontalChain();
 
         constraintSet.applyTo(layout);
 
@@ -47,5 +48,8 @@ public class PlayActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    public void onClickErase(View view) {
     }
 }
