@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,7 +53,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickQuit(View view) {
-        Intent intent = new Intent(this,SubmitActivity.class);
-        startActivity(intent);
+        new AlertDialog.Builder(this)
+                .setTitle("Quitter l'application")
+                .setMessage("Voulez-vous quitter l'application ?")
+
+                .setPositiveButton("Quitter", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        System.exit(0);
+                    }
+                })
+
+                .setNegativeButton("Annuler", null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }

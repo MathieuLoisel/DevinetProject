@@ -37,7 +37,7 @@ public class LevelAdapter extends ArrayAdapter<Level> {
         tvTitle.setText(Objects.requireNonNull(getItem(position)).getName());
 
         ProgressBar progressBar = convertView.findViewById(R.id.progressbar_by_level);
-        //TODO:faire getByLEvel dans word
+        //TODO:Récupérer nombre de mots correctement fait
         //progressBar.setProgress();
 
 
