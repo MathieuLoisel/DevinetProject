@@ -75,7 +75,7 @@ public class SelectListActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Category> categories) {
                 SelectListActivity.this.categories = categories;
-                categoryList.setAdapter(new CategoryAdapter(SelectListActivity.this,R.layout.style_ligne_select_liste_layout,categories));
+                categoryList.setAdapter(new CategoryAdapter(SelectListActivity.this,R.layout.style_ligne_select_list_layout,categories));
             }
         });
     }

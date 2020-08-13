@@ -20,4 +20,5 @@ public interface WordRepository {
     void deleteAll();
     LiveData<List<Word>> getByLevel(int idLevel);
     LiveData<List<Word>> getByCategory(int idCategory);
+    LiveData<List<Word>> getByLevelAndCategory(int idLevel, int idCategory);
 }
