@@ -38,4 +38,7 @@ public interface WordDao {
 
     @Query("SELECT * FROM Word WHERE idLevel = :idLevel")
     LiveData<List<Word>> getByLevel(int idLevel);
+
+    @Query("SELECT * FROM Word WHERE idCategory = :idCategory")
+    LiveData<List<Word>> getByCategory(int idCategory);
 }

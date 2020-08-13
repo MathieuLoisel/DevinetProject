@@ -3,6 +3,7 @@ package com.example.devinetproject.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,6 +15,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.devinetproject.R;
+import com.example.devinetproject.bo.Word;
+import com.example.devinetproject.vm.WordVm;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,11 +35,17 @@ public class PlayActivity extends AppCompatActivity {
 
         ConstraintLayout constraintLayout = findViewById(R.id.layout_play);
 
+
+
+
+
         //TODO:Récupérer le mot à deviner
         String wordToGuess = "Fraise";
         wordToGuess = wordToGuess.toUpperCase();
-
         StringBuffer userProposal = new StringBuffer();
+        if (wordToGuess.equals(userProposal.toString())){
+            findViewById(R.id.ibtn_next).setClickable(true);
+        }
 
         //Création de tableaux d'id permettant de mettre en place la horizontalChain
         int[] viewIdsTextViewEmpty = new int[wordToGuess.toCharArray().length + LAST_ITEM_BIN];
@@ -61,7 +70,7 @@ public class PlayActivity extends AppCompatActivity {
             viewIdsTextViewEmpty[j] = tv.getId();
             constraintLayout.addView(tv);
             if (j == wordToGuessShuffled.size() - 1) {
-                ibtnErase = createIbtnErase(constraintLayout, viewIdsTextViewEmpty, constraintSetTvEmpty, j);
+                ibtnErase = createIbtnErase(constraintLayout, viewIdsTextViewEmpty, constraintSetTvEmpty, j, viewIdsTextViewWithChar);
             }
             //Placement des textviews vides en hauteur
             constraintSetTvEmpty.clone(constraintLayout);
@@ -84,7 +93,7 @@ public class PlayActivity extends AppCompatActivity {
     }
 
 
-    private ImageButton createIbtnErase(ConstraintLayout constraintLayout, final int[] viewIdsTextViewEmpty, ConstraintSet constraintSetTvEmpty, int j) {
+    private ImageButton createIbtnErase(ConstraintLayout constraintLayout, final int[] viewIdsTextViewEmpty, ConstraintSet constraintSetTvEmpty, int j, final int[] viewIdsTextViewWithChar) {
         ImageButton ibtnErase;
         ibtnErase = new ImageButton(this);
         ibtnErase.setId(generateViewId());
@@ -97,9 +106,12 @@ public class PlayActivity extends AppCompatActivity {
             //TODO:OnClick pour le bouton erase. viewIdsTextViewEmpty setText(""). viewIdsTextViewFull setVisibility(VISIBLE)
             @Override
             public void onClick(View view) {
-                for (int i = 0; i < viewIdsTextViewEmpty.length; i++) {
-                    findViewById(viewIdsTextViewEmpty[i]);
-
+                for (int i = 0; i < viewIdsTextViewEmpty.length - LAST_ITEM_BIN; i++) {
+                    TextView tvEmpty = findViewById(viewIdsTextViewEmpty[i]);
+                    tvEmpty.setText("");
+                    TextView tvFull = findViewById(viewIdsTextViewWithChar[i]);
+                    tvFull.setVisibility(View.VISIBLE);
+                    isFull[i] = false;
                 }
             }
         });
@@ -134,7 +146,6 @@ public class PlayActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     tv.setVisibility(View.INVISIBLE);
-                    //TODO:faire une boucle sur un tableau de boolean de la taille du mot. Au premier isVide == true, on set le texte et on passe isVide à false
                     for (int j = 0; j < isFull.length; j++) {
                         if (!isFull[j]) {
                             final TextView tvVides = findViewById(viewIdsTextViewEmpty[j]);

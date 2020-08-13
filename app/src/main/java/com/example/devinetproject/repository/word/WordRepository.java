@@ -1,6 +1,7 @@
 package com.example.devinetproject.repository.word;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Query;
 
 import com.example.devinetproject.bo.Word;
 
@@ -18,4 +19,5 @@ public interface WordRepository {
     void delete(Word ... words);
     void deleteAll();
     LiveData<List<Word>> getByLevel(int idLevel);
+    LiveData<List<Word>> getByCategory(int idCategory);
 }

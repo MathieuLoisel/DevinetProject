@@ -50,7 +50,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="30dp"
-        android:text="Mot (max x lettres)"
+        android:text="Mot (max 7 lettres)"
         android:textSize="20dp"
         />
 

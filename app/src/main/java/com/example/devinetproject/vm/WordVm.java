@@ -51,4 +51,8 @@ public class WordVm extends AndroidViewModel {
     public LiveData<List<Word>> getByLevel(int idLevel){
         return wordRepository.getByLevel(idLevel);
     }
+
+    public LiveData<List<Word>> getByCategory(int idCategory){
+        return wordRepository.getByCategory(idCategory);
+    }
 }

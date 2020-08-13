@@ -86,7 +86,6 @@ public abstract class AppDatabase extends RoomDatabase {
                             new Category("Légumes"),
                             new Category("Voitures"),
                             new Category("Fruits"),
-                            new Category("Objets"),
                             new Category("Drapeaux")
                     );
 
@@ -96,19 +95,118 @@ public abstract class AppDatabase extends RoomDatabase {
                             new Level("4 lettres"),
                             new Level("5 lettres"),
                             new Level("6 lettres"),
-                            new Level("7 lettres"),
-                            new Level("8 lettres")
+                            new Level("7 lettres")
                     );
 
 
 
-                    //Insertion de 5 mots pour le moment (1 mot par catégorie)
                     WordDao.insert(
-                            new Word("/img", "Trou", "", 1, 1),
-                            new Word("/img", "Carte", "", 2, 2),
-                            new Word("/img", "Propre", "", 3, 3),
-                            new Word("/img", "Abricot", "", 4, 4),
-                            new Word("/img", "Survivre", "", 5, 5)
+
+                            //Insertion mots pour les légumes 4 lettres
+                            new Word("/img", "Chou", "", 1, 1),
+                            new Word("/img", "Fêve", "", 1, 1),
+                            new Word("/img", "Pois", "", 1, 1),
+                            new Word("/img", "Rave", "", 1, 1),
+
+                            //Insertion mots pour les légumes 5 lettres
+                            new Word("/img", "Bette", "", 1, 2),
+                            new Word("/img", "Navet", "", 1, 2),
+                            new Word("/img", "Radis", "", 1, 2),
+                            new Word("/img", "Luffa", "", 1, 2),
+                            new Word("/img", "Pépon", "", 1, 2),
+
+                            //Insertion  mots pour les légumes 6 lettres
+                            new Word("/img", "Celeri", "", 1, 3),
+                            new Word("/img", "Endive", "", 1, 3),
+                            new Word("/img", "Laitue", "", 1, 3),
+                            new Word("/img", "Oignon", "", 1, 3),
+                            new Word("/img", "Panais", "", 1, 3),
+                            new Word("/img", "Patate", "", 1, 3),
+                            new Word("/img", "Piment", "", 1, 3),
+                            new Word("/img", "Salade", "", 1, 3),
+
+                            //Insertion 5 mots pour les légumes 7 lettres
+                            new Word("/img", "Asperge", "", 1, 4),
+                            new Word("/img", "Carotte", "", 1, 4),
+                            new Word("/img", "Cresson", "", 1, 4),
+                            new Word("/img", "Épinard", "", 1, 4),
+                            new Word("/img", "Haricot", "", 1, 4),
+                            new Word("/img", "Poireau", "", 1, 4),
+                            new Word("/img", "Poivron", "", 1, 4),
+                            new Word("/img", "Brocoli", "", 1, 4),
+
+
+
+                            //Insertion 4 mots pour les voitures 4 lettres
+                            new Word("/img", "Alfa", "", 2, 2),
+                            new Word("/img", "Audi", "", 2, 2),
+                            new Word("/img", "Ford", "", 2, 2),
+                            new Word("/img", "Seat", "", 2, 2),
+
+                            //Insertion 4 mots pour les voitures 5 lettres
+                            new Word("/img", "SMART  ", "", 2, 3),
+                            new Word("/img", "BUICK", "", 2, 3),
+                            new Word("/img", "Honda", "", 2, 3),
+
+                            //Insertion 4 mots pour les voitures 6 lettres
+                            new Word("/img", "Ferrari", "", 2, 4),
+
+                            //Insertion 4 mots pour les voitures 7 lettres
+                            new Word("/img", "Peugeot", "", 2, 4),
+                            new Word("/img", "Citroën", "", 2, 4),
+                            new Word("/img", "Hyundai", "", 2, 4),
+
+
+
+                            //Insertion 4 mots pour les fruits 4 lettres
+                            new Word("/img", "Cola", "", 3, 1),
+                            new Word("/img", "Mûre", "", 3, 1),
+                            new Word("/img", "Noix", "", 3, 1),
+
+                             //Insertion 4 mots pour les fruits 5 lettres
+                            new Word("/img", "Ataca", "", 3, 2),
+                            new Word("/img", "Datte", "", 3, 2),
+                            new Word("/img", "Melon", "", 3, 2),
+                            new Word("/img", "Olive", "", 3, 2),
+
+                             //Insertion 4 mots pour les fruits 6 lettres
+                            new Word("/img", "Ananas", "", 3, 3),
+                            new Word("/img", "Banane", "", 3, 3),
+                            new Word("/img", "Cerise", "", 3, 3),
+                            new Word("/img", "Golden", "", 3, 3),
+                            new Word("/img", "Merise", "", 3, 3),
+
+                             //Insertion 4 mots pour les fruits 7 lettres
+                            new Word("/img", "ABRICOT", "", 3, 4),
+                            new Word("/img", "GRENADE", "", 3, 4),
+
+
+
+
+                            //Insertion 4 mots pour les drapeaux 4 lettres
+                            new Word("/img", "SIAM", "", 4, 1),
+                            new Word("/img", "CUBA", "", 4, 1),
+                            new Word("/img", "MALI", "", 4, 1),
+                            new Word("/img", "INDE", "", 4, 1),
+
+                            //Insertion 4 mots pour les drapeaux 5 lettres
+                            new Word("/img", "LIBYE", "", 4, 2),
+                            new Word("/img", "TCHAD", "", 4, 2),
+                            new Word("/img", "GABON", "", 4, 2),
+                            new Word("/img", "LIBAN", "", 4, 2),
+
+                            //Insertion 4 mots pour les drapeaux 6 lettres
+                            new Word("/img", "Brésil", "", 4, 3),
+                            new Word("/img", "Suisse", "", 4, 3),
+                            new Word("/img", "Italie", "", 4, 3),
+                            new Word("/img", "Serbie", "", 4, 3),
+                            new Word("/img", "France", "", 4, 3),
+
+                            //Insertion 4 mots pour les drapeaux 7 lettres
+                            new Word("/img", "Sénégal", "", 4, 4),
+                            new Word("/img", "Islande", "", 4, 4),
+                            new Word("/img", "Hongrie", "", 4, 4),
+                            new Word("/img", "Croatie", "", 4, 4)
                     );
                 }
             });

@@ -3,6 +3,9 @@ package com.example.devinetproject.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.content.Intent;
@@ -13,10 +16,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.example.devinetproject.R;
+import com.example.devinetproject.bo.Category;
+import com.example.devinetproject.vm.CategoryVm;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -36,6 +45,27 @@ public class SubmitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit);
         imageSubmit = findViewById(R.id.iv_photo);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CategoryVm categoryVm = new ViewModelProvider(this).get(CategoryVm.class);
+        final Spinner dropdown = findViewById(R.id.spinner_dropdown_category);
+        LiveData<List<Category>> listCategories = categoryVm.get();
+        listCategories.observe(this, new Observer<List<Category>>() {
+            @Override
+            public void onChanged(List<Category> categories) {
+                List<String> listName = new ArrayList<>();
+                for (Category cat:categories){
+                    listName.add(cat.getName());
+                }
+                ArrayAdapter<CharSequence> adapter = new ArrayAdapter(SubmitActivity.this,
+                         android.R.layout.simple_spinner_item,listName);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                dropdown.setAdapter(adapter);
+            }
+        });
     }
 
     public void onClickSubmitNewWord(View view) {

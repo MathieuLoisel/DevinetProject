@@ -76,4 +76,9 @@ public class WordRepositoryImp implements WordRepository{
         return wordDao.getByLevel(idLevel);
     }
 
+    @Override
+    public LiveData<List<Word>> getByCategory(int idCategory){
+        return wordDao.getByCategory(idCategory);
+    }
+
 }
