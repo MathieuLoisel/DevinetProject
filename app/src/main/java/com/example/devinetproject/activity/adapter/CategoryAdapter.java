@@ -25,9 +25,9 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //On décompresse le fichier style_ligne_utilisateur
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View nouvelleLigne = li.inflate(R.layout.style_ligne_select_liste_layout,parent,false);
+        View nouvelleLigne = li.inflate(R.layout.style_ligne_select_list_layout,parent,false);
 
-        TextView idCategory = nouvelleLigne.findViewById(R.id.tv_level_select_line);
+        TextView idCategory = nouvelleLigne.findViewById(R.id.tv_list_select_line);
 
         idCategory.setText("Niveau " + getItem(position).getId() + " - " + (getItem(position).getId() + 3) + " lettres");
 

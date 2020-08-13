@@ -6,7 +6,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.devinetproject.R;
@@ -30,14 +34,15 @@ public class MyResultsDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_results_details);
+
+        wordList = findViewById(R.id.lv_results_details_words_list);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        wordList = findViewById(R.id.lv_results_details_words_list);
-        wordVM = ViewModelProviders.of(this).get(WordVm.class);
+        wordVM = new ViewModelProvider(this).get(WordVm.class);
 
         wordVM.get().observe(this, new Observer<List<Word>>() {
             @Override

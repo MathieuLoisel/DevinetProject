@@ -29,7 +29,7 @@ public class LevelAdapter2 extends ArrayAdapter<Level> {
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View nouvelleLigne = li.inflate(R.layout.style_ligne_select_level_layout,parent,false);
 
-        TextView idCategory = nouvelleLigne.findViewById(R.id.tv_level_select_list);
+        TextView idCategory = nouvelleLigne.findViewById(R.id.tv_level_select_line);
 
         idCategory.setText("Liste " + getItem(position).getId());
 
