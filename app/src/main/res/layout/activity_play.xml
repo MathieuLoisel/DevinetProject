@@ -8,6 +8,10 @@
     android:id="@+id/layout_play"
     >
 
+    <include
+        android:id="@+id/tb_toolbar"
+        layout="@layout/toolbar_layout" />
+
     <ImageView
         android:id="@+id/iv_photo"
         android:layout_width="300dp"

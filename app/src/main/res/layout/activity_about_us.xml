@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.AboutUsActivity">
 
+    <include layout="@layout/toolbar_layout"/>
     <TextView
         android:id="@+id/tv_about_us_developed_by"
         android:layout_width="match_parent"

@@ -12,30 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PlayActivity">
+        <activity android:name=".activity.PlayActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity.SelectListActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
-        </activity>
-        <activity android:name=".activity.SelectListActivity" >
-
-        </activity>
-        <activity android:name=".activity.SelectLevelActivity" >
-
-
-        </activity>
+        <activity android:name=".activity.SelectLevelActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activity.MyResultsDetailsActivity" >
 
 
         </activity>
         <activity android:name=".activity.MyResultsActivity" />
-        <activity android:name=".activity.MyResultsGeneralActivity" >
-        </activity>
-        <activity android:name=".activity.SubmitActivity" >
+        <activity android:name=".activity.MyResultsGeneralActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity.SubmitActivity" />
 
-
-        </activity>
-        <activity android:name=".activity.SettingsActivity" />
-        <activity android:name=".activity.AboutUsActivity" />
-        <activity android:name=".activity.MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".activity.SettingsActivity" android:theme="@style/Theme.AppCompat.NoActionBar"  />
+        <activity android:name=".activity.AboutUsActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.MainActivity" android:theme="@style/Theme.AppCompat.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,6 +34,8 @@
             </intent-filter>
 
         </activity>
+
+
     </application>
 
 </manifest>
