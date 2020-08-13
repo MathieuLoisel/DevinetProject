@@ -4,34 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.devinetproject.R;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static android.view.View.TEXT_ALIGNMENT_CENTER;
 import static android.view.View.generateViewId;
 
 public class PlayActivity extends AppCompatActivity {
-    boolean[] isEmpty;
+    boolean[] isFull;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +37,7 @@ public class PlayActivity extends AppCompatActivity {
         int[] viewIdsTextViewWithChar = new int[wordToGuess.toCharArray().length];
 
         //Création d'un tableau de boolean permettant de remplir dynamiquement les TextView vide en fonction des placers qu'il reste
-        isEmpty = new boolean[wordToGuess.toCharArray().length];
+        isFull = new boolean[wordToGuess.toCharArray().length];
         ImageButton ibtnErase = null;
 
         List<Character> wordToGuessShuffled = shuffleWordToGuess(wordToGuess);
@@ -78,7 +67,7 @@ public class PlayActivity extends AppCompatActivity {
         constraintSetTvEmpty.createHorizontalChain(ConstraintSet.PARENT_ID, ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, viewIdsTextViewEmpty, null, ConstraintSet.CHAIN_PACKED);
         constraintSetTvEmpty.applyTo(constraintLayout);
 
-        createTextViewForEachChar(wordToGuessShuffled, constraintLayout, viewIdsTextViewWithChar, ibtnErase);
+        createTextViewForEachChar(wordToGuessShuffled, constraintLayout, viewIdsTextViewWithChar, viewIdsTextViewEmpty, ibtnErase);
 
         //Contraintes pour les textviews pleins
         ConstraintSet constraintSetTvFull = new ConstraintSet();
@@ -90,7 +79,7 @@ public class PlayActivity extends AppCompatActivity {
 
 
 
-    private ImageButton createIbtnErase(ConstraintLayout constraintLayout, int[] viewIdsTextViewEmpty, ConstraintSet constraintSetTvEmpty, int j) {
+    private ImageButton createIbtnErase(ConstraintLayout constraintLayout, final int[] viewIdsTextViewEmpty, ConstraintSet constraintSetTvEmpty, int j) {
         ImageButton ibtnErase;
         ibtnErase = new ImageButton(this);
         ibtnErase.setId(generateViewId());
@@ -100,10 +89,13 @@ public class PlayActivity extends AppCompatActivity {
         ibtnErase.setMaxHeight(120);
         ibtnErase.setImageResource(R.drawable.ic_baseline_delete_24);
         ibtnErase.setOnClickListener(new View.OnClickListener() {
-            //TODO:OnClick pour le bouton erase
+            //TODO:OnClick pour le bouton erase. viewIdsTextViewEmpty setText(""). viewIdsTextViewFull setVisibility(VISIBLE)
             @Override
             public void onClick(View view) {
+                for (int i = 0; i < viewIdsTextViewEmpty.length; i++) {
+                    findViewById(viewIdsTextViewEmpty[i]);
 
+                }
             }
         });
         viewIdsTextViewEmpty[j+1] = ibtnErase.getId();
@@ -123,7 +115,7 @@ public class PlayActivity extends AppCompatActivity {
      * @param viewIdsTextViewWithChar Tableau d'id (int) que l'on rempli avec les ids de chaque textview créé. Utiliser pour le horizontalChain
      * @param ibtnErase Bouton auquel on se réfère pour placer les différents TextView en hauteur
      */
-    private void createTextViewForEachChar(List<Character> wordToGuessShuffled, ConstraintLayout constraintLayout, int[] viewIdsTextViewWithChar, ImageButton ibtnErase) {
+    private void createTextViewForEachChar(List<Character> wordToGuessShuffled, ConstraintLayout constraintLayout, int[] viewIdsTextViewWithChar, final int[] viewIdsTextViewEmpty, ImageButton ibtnErase) {
         for (int i = 0; i < wordToGuessShuffled.size(); i++) {
             final TextView tv = new TextView(this);
             tv.setId(generateViewId());
@@ -138,9 +130,20 @@ public class PlayActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     tv.setVisibility(View.INVISIBLE);
                     //TODO:faire une boucle sur un tableau de boolean de la taille du mot. Au premier isVide == true, on set le texte et on passe isVide à false
-                    for (int j = 0; j < isEmpty.length; j++) {
-                        if (isEmpty[j] == false){
-                            isEmpty[j] = true;
+                    for (int j = 0; j < isFull.length; j++) {
+                        if (!isFull[j]){
+                            final TextView textview = findViewById(viewIdsTextViewEmpty[j]);
+                            textview.setText(tv.getText());
+                            isFull[j] = true;
+                            final int finalJ = j;
+                            textview.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    tv.setVisibility(View.VISIBLE);
+                                    textview.setText("");
+                                    isFull[finalJ] = false;
+                                }
+                            });
                             break;
                         }
                     }
