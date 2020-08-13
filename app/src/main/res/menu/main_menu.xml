@@ -15,5 +15,13 @@
         app:showAsAction="never"
     />
 
+    <item
+        android:id="@+id/btn_home"
+        android:title="Accueil"
+        android:icon="@drawable/ic_baseline_home_24"
+        app:showAsAction="never"
+        />
+
+
 
 </menu>

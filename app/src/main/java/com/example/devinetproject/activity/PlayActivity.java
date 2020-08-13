@@ -1,14 +1,19 @@
 package com.example.devinetproject.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -29,6 +34,9 @@ public class PlayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tb_toolbar);
+        setSupportActionBar(toolbar);
 
         ConstraintLayout constraintLayout = findViewById(R.id.layout_play);
 
@@ -83,6 +91,31 @@ public class PlayActivity extends AppCompatActivity {
         constraintSetTvFull.applyTo(constraintLayout);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.btn_main_about_us :
+                Intent intentAboutUs = new Intent(this,AboutUsActivity.class);
+                startActivity(intentAboutUs);
+                return true;
+            case R.id.btn_home :
+                Intent intentHome = new Intent(this,MainActivity.class);
+                startActivity(intentHome);
+                return true;
+            case R.id.btn_main_settings :
+                Intent intentSettings = new Intent(this,SettingsActivity.class);
+                startActivity(intentSettings);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private ImageButton createIbtnErase(ConstraintLayout constraintLayout, final int[] viewIdsTextViewEmpty, ConstraintSet constraintSetTvEmpty, int j) {
         ImageButton ibtnErase;

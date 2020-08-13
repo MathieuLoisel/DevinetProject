@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activity.SettingsActivity">
 
+    <include layout="@layout/toolbar_layout"/>
     <TextView
         android:id="@+id/tv_settings_sounds"
         android:layout_width="250dp"

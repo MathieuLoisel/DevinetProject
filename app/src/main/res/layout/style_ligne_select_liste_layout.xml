@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/tv_level_select_line"
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:layout_marginTop="10dp"
         android:text="Niveau 1 - 4 lettres"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tb_toolbar" />
 
     <TextView
         android:id="@+id/tv_level_select_line_progression"
