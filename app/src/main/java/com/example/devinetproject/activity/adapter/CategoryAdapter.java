@@ -29,7 +29,7 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
 
         TextView idCategory = nouvelleLigne.findViewById(R.id.tv_list_select_line);
 
-        idCategory.setText("Niveau " + getItem(position).getId() + " - " + (getItem(position).getId() + 3) + " lettres");
+        idCategory.setText("Liste " + getItem(position).getId());
 
         //On retourne la ligne
         return nouvelleLigne;

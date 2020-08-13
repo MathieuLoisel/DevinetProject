@@ -15,9 +15,9 @@ import com.example.devinetproject.bo.Level;
 
 import java.util.List;
 
-public class LevelAdapter2 extends ArrayAdapter<Level> {
+public class ListLevelAdapter extends ArrayAdapter<Level> {
 
-    public LevelAdapter2(@NonNull Context context, int resource, @NonNull List<Level> objects) {
+    public ListLevelAdapter(@NonNull Context context, int resource, @NonNull List<Level> objects) {
         super(context, resource, objects);
     }
 
@@ -29,9 +29,9 @@ public class LevelAdapter2 extends ArrayAdapter<Level> {
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View nouvelleLigne = li.inflate(R.layout.style_ligne_select_level_layout,parent,false);
 
-        TextView idCategory = nouvelleLigne.findViewById(R.id.tv_level_select_line);
+        TextView idLevel = nouvelleLigne.findViewById(R.id.tv_level_select_line);
 
-        idCategory.setText("Liste " + getItem(position).getId());
+        idLevel.setText("Niveau " + getItem(position).getId() + " - " + (getItem(position).getId() + 3) + " lettres");
 
         //On retourne la ligne
         return nouvelleLigne;

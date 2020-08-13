@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickPlay(View view)
     {
-        Intent intent = new Intent(this,SelectListActivity.class);
+        Intent intent = new Intent(this,SelectLevelActivity.class);
         startActivity(intent);
     }
 

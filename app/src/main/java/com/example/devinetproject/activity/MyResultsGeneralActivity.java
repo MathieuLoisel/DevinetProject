@@ -16,7 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.devinetproject.R;
-import com.example.devinetproject.activity.adapter.LevelAdapter;
+import com.example.devinetproject.activity.adapter.GeneralLevelAdapter;
 import com.example.devinetproject.bo.Level;
 import com.example.devinetproject.vm.LevelVm;
 
@@ -79,8 +79,8 @@ public class MyResultsGeneralActivity extends AppCompatActivity {
         observer.observe(this, new Observer<List<Level>>() {
             @Override
             public void onChanged(List<Level> levels) {
-                LevelAdapter levelAdapter = new LevelAdapter(MyResultsGeneralActivity.this, R.layout.style_list_results_general, levels);
-                listLevel.setAdapter(levelAdapter);
+                GeneralLevelAdapter generalLevelAdapter = new GeneralLevelAdapter(MyResultsGeneralActivity.this, R.layout.style_list_results_general, levels);
+                listLevel.setAdapter(generalLevelAdapter);
             }
         });
     }

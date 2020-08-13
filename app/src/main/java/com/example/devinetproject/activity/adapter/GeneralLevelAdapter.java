@@ -17,9 +17,9 @@ import com.example.devinetproject.bo.Level;
 import java.util.List;
 import java.util.Objects;
 
-public class LevelAdapter extends ArrayAdapter<Level> {
+public class GeneralLevelAdapter extends ArrayAdapter<Level> {
 
-    public LevelAdapter(@NonNull Context context, int resource, @NonNull List<Level> objects) {
+    public GeneralLevelAdapter(@NonNull Context context, int resource, @NonNull List<Level> objects) {
         super(context, resource, objects);
     }
 
