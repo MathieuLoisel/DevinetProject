@@ -30,7 +30,6 @@ import java.util.Objects;
 public class CategoryAdapter extends ArrayAdapter<Category> {
 
     private WordVm wordVm;
-    private int progress;
     private Map<Integer,Integer> mapCategoryProgress;
     private SelectListActivity activity;
 

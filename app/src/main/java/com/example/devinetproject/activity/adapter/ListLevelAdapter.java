@@ -27,7 +27,6 @@ import java.util.Map;
 public class ListLevelAdapter extends ArrayAdapter<Level> {
 
     private WordVm wordVm;
-    private int progress;
     private Map<Integer,Integer> mapLevelProgress;
     private SelectLevelActivity activity;
 
