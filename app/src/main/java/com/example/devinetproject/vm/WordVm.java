@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.devinetproject.bo.Word;
 import com.example.devinetproject.repository.word.WordRepository;
@@ -51,7 +52,6 @@ public class WordVm extends AndroidViewModel {
     public LiveData<List<Word>> getByLevel(int idLevel){
         return wordRepository.getByLevel(idLevel);
     }
-
     public LiveData<List<Word>> getByCategory(int idCategory){
         return wordRepository.getByCategory(idCategory);
     }

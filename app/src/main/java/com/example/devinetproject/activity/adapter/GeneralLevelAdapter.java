@@ -35,14 +35,6 @@ public class GeneralLevelAdapter extends ArrayAdapter<Level> {
         TextView tvTitle = convertView.findViewById(R.id.tv_title);
         tvTitle.setText(Objects.requireNonNull(getItem(position)).getName());
 
-        ProgressBar progressBar = convertView.findViewById(R.id.progressbar_by_level);
-        //TODO:Récupérer nombre de mots correctement fait
-        //progressBar.setProgress();
-
-
-        //TODO:Créer un divider (View) programmatiquement. Comme ça le dernier n'en aura pas
-        View divider = new View(getContext());
-
         return convertView;
     }
 }

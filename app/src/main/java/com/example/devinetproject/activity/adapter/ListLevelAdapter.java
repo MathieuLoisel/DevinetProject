@@ -14,6 +14,7 @@ import com.example.devinetproject.R;
 import com.example.devinetproject.bo.Level;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ListLevelAdapter extends ArrayAdapter<Level> {
 
@@ -21,19 +22,15 @@ public class ListLevelAdapter extends ArrayAdapter<Level> {
         super(context, resource, objects);
     }
 
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        //On décompresse le fichier style_ligne_utilisateur
-        LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View nouvelleLigne = li.inflate(R.layout.style_ligne_select_level_layout,parent,false);
-
-        TextView idLevel = nouvelleLigne.findViewById(R.id.tv_level_select_line);
-
+        if (convertView == null) {
+            LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = layoutInflater.inflate(R.layout.style_ligne_select_level_layout,parent,false);
+        }
+        TextView idLevel = convertView.findViewById(R.id.tv_level_select_line);
         idLevel.setText("Niveau " + getItem(position).getId() + " - " + (getItem(position).getId() + 3) + " lettres");
-
-        //On retourne la ligne
-        return nouvelleLigne;
+        return convertView;
     }
 }

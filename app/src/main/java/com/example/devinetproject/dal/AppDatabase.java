@@ -138,18 +138,18 @@ public abstract class AppDatabase extends RoomDatabase {
 
 
                             //Insertion 4 mots pour les voitures 4 lettres
-                            new Word("/img", "Alfa", "", 2, 2),
-                            new Word("/img", "Audi", "", 2, 2),
-                            new Word("/img", "Ford", "", 2, 2),
-                            new Word("/img", "Seat", "", 2, 2),
+                            new Word("/img", "Alfa", "", 2, 1),
+                            new Word("/img", "Audi", "", 2, 1),
+                            new Word("/img", "Ford", "", 2, 1),
+                            new Word("/img", "Seat", "", 2, 1),
 
                             //Insertion 4 mots pour les voitures 5 lettres
-                            new Word("/img", "SMART  ", "", 2, 3),
-                            new Word("/img", "BUICK", "", 2, 3),
-                            new Word("/img", "Honda", "", 2, 3),
+                            new Word("/img", "SMART", "", 2, 2),
+                            new Word("/img", "BUICK", "", 2, 2),
+                            new Word("/img", "Honda", "", 2, 2),
 
                             //Insertion 4 mots pour les voitures 6 lettres
-                            new Word("/img", "Ferrari", "", 2, 4),
+                            new Word("/img", "Ferrari", "", 2, 3),
 
                             //Insertion 4 mots pour les voitures 7 lettres
                             new Word("/img", "Peugeot", "", 2, 4),

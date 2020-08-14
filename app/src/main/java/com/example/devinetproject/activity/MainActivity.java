@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.devinetproject.R;
 import com.example.devinetproject.bo.Category;
 import com.example.devinetproject.bo.Word;
+import com.example.devinetproject.dal.AppDatabase;
 import com.example.devinetproject.vm.CategoryVm;
 import com.example.devinetproject.vm.WordVm;
 import com.facebook.stetho.Stetho;
@@ -28,16 +29,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Stetho.initializeWithDefaults(this);
-
-        final WordVm wordVm = new ViewModelProvider(this).get(WordVm.class);
-        final CategoryVm categoryVm = new ViewModelProvider(this).get(CategoryVm.class);
+        AppDatabase.getInstance(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_toolbar);
         setSupportActionBar(toolbar);
-
-
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -73,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickMyResults(View view) {
-        Intent intent = new Intent(this,MyResultsActivity.class);
+        Intent intent = new Intent(this,MyResultsGeneralActivity.class);
         startActivity(intent);
     }
 

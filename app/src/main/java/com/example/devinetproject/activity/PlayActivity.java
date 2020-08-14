@@ -8,7 +8,6 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +31,7 @@ import static android.view.View.generateViewId;
 public class PlayActivity extends AppCompatActivity {
     boolean[] isFull;
     public static final int LAST_ITEM_BIN = 1;
+    private Word wordToGuess = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,29 +41,42 @@ public class PlayActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_toolbar);
         setSupportActionBar(toolbar);
 
+        findViewById(R.id.ibtn_next).setClickable(false);
+
         ConstraintLayout constraintLayout = findViewById(R.id.layout_play);
 
+        List<Word> words = getIntent().getParcelableArrayListExtra("listWords");
+        String wordToGuessName = null;
+        int compteur = 0;
+        for (Word word : words) {
+            compteur++;
+            wordToGuess = word;
+            wordToGuessName = word.getGuessWord();
+            if (!word.getGuessWord().toUpperCase().equals(wordToGuess.getProposal().toUpperCase())) {
+                break;
+            } else {
+                if (compteur == words.size()) {
+                    finish();
+                }
+            }
+        }
+        wordToGuessName = wordToGuessName.toUpperCase();
 
 
-
-
-        //TODO:Récupérer le mot à deviner
-        String wordToGuess = "Fraise";
-        wordToGuess = wordToGuess.toUpperCase();
         StringBuffer userProposal = new StringBuffer();
-        if (wordToGuess.equals(userProposal.toString())){
+        if (wordToGuessName.equals(userProposal.toString())) {
             findViewById(R.id.ibtn_next).setClickable(true);
         }
 
         //Création de tableaux d'id permettant de mettre en place la horizontalChain
-        int[] viewIdsTextViewEmpty = new int[wordToGuess.toCharArray().length + LAST_ITEM_BIN];
-        int[] viewIdsTextViewWithChar = new int[wordToGuess.toCharArray().length];
+        int[] viewIdsTextViewEmpty = new int[wordToGuessName.toCharArray().length + LAST_ITEM_BIN];
+        int[] viewIdsTextViewWithChar = new int[wordToGuessName.toCharArray().length];
 
         //Création d'un tableau de boolean permettant de remplir dynamiquement les TextView vide en fonction des placers qu'il reste
-        isFull = new boolean[wordToGuess.toCharArray().length];
+        isFull = new boolean[wordToGuessName.toCharArray().length];
         ImageButton ibtnErase = null;
 
-        List<Character> wordToGuessShuffled = shuffleWordToGuess(wordToGuess);
+        List<Character> wordToGuessShuffled = shuffleWordToGuess(wordToGuessName);
 
         ConstraintSet constraintSetTvEmpty = new ConstraintSet();
         //Création des textViews vides
@@ -91,7 +104,7 @@ public class PlayActivity extends AppCompatActivity {
         constraintSetTvEmpty.createHorizontalChain(ConstraintSet.PARENT_ID, ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, viewIdsTextViewEmpty, null, ConstraintSet.CHAIN_PACKED);
         constraintSetTvEmpty.applyTo(constraintLayout);
 
-        createTextViewForEachChar(wordToGuessShuffled, constraintLayout, viewIdsTextViewWithChar, viewIdsTextViewEmpty, ibtnErase, userProposal, wordToGuess);
+        createTextViewForEachChar(wordToGuessShuffled, constraintLayout, viewIdsTextViewWithChar, viewIdsTextViewEmpty, ibtnErase, userProposal);
 
         //Contraintes pour les textviews pleins
         ConstraintSet constraintSetTvFull = new ConstraintSet();
@@ -110,16 +123,16 @@ public class PlayActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.btn_main_about_us :
-                Intent intentAboutUs = new Intent(this,AboutUsActivity.class);
+            case R.id.btn_main_about_us:
+                Intent intentAboutUs = new Intent(this, AboutUsActivity.class);
                 startActivity(intentAboutUs);
                 return true;
-            case R.id.btn_home :
-                Intent intentHome = new Intent(this,MainActivity.class);
+            case R.id.btn_home:
+                Intent intentHome = new Intent(this, MainActivity.class);
                 startActivity(intentHome);
                 return true;
-            case R.id.btn_main_settings :
-                Intent intentSettings = new Intent(this,SettingsActivity.class);
+            case R.id.btn_main_settings:
+                Intent intentSettings = new Intent(this, SettingsActivity.class);
                 startActivity(intentSettings);
                 return true;
         }
@@ -165,7 +178,12 @@ public class PlayActivity extends AppCompatActivity {
      * @param viewIdsTextViewWithChar Tableau d'id (int) que l'on rempli avec les ids de chaque textview créé. Utiliser pour le horizontalChain
      * @param ibtnErase               Bouton auquel on se réfère pour placer les différents TextView en hauteur
      */
-    private void createTextViewForEachChar(List<Character> wordToGuessShuffled, ConstraintLayout constraintLayout, final int[] viewIdsTextViewWithChar, final int[] viewIdsTextViewEmpty, ImageButton ibtnErase, final StringBuffer userProposal, final String wordToGuess) {
+    private void createTextViewForEachChar(List<Character> wordToGuessShuffled,
+                                           ConstraintLayout constraintLayout,
+                                           final int[] viewIdsTextViewWithChar,
+                                           final int[] viewIdsTextViewEmpty,
+                                           ImageButton ibtnErase,
+                                           final StringBuffer userProposal) {
         for (int i = 0; i < wordToGuessShuffled.size(); i++) {
             final TextView tv = new TextView(this);
             tv.setId(generateViewId());
@@ -197,7 +215,7 @@ public class PlayActivity extends AppCompatActivity {
                         }
                     }
                     for (int k = 0; k < isFull.length; k++) {
-                        if (k == isFull.length-1) {
+                        if (k == isFull.length - 1) {
                             if (isFull[k]) {
                                 for (int m = 0; m < viewIdsTextViewEmpty.length - LAST_ITEM_BIN; m++) {
                                     TextView tv = findViewById(viewIdsTextViewEmpty[m]);
@@ -206,8 +224,13 @@ public class PlayActivity extends AppCompatActivity {
                             }
                         }
                     }
-                    if(isFull[isFull.length-1] == true){
-                        if (userProposal.toString().equals(wordToGuess)) {
+                    wordToGuess.setProposal(userProposal.toString().toUpperCase());
+                    if (isFull[isFull.length - 1]) {
+                        WordVm wordVm = new ViewModelProvider(PlayActivity.this).get(WordVm.class);
+                        wordVm.update(wordToGuess);
+
+                        if (userProposal.toString().equals(wordToGuess.getGuessWord().toUpperCase())) {
+                            findViewById(R.id.ibtn_next).setClickable(true);
                             new AlertDialog.Builder(PlayActivity.this)
                                     .setTitle("Bravo ! Vous avez deviné le mot !")
                                     .setNeutralButton("OK", null)
@@ -242,5 +265,9 @@ public class PlayActivity extends AppCompatActivity {
         List<Character> wordToGuessArray = Arrays.asList(wordToGuessCharacter);
         Collections.shuffle(wordToGuessArray);
         return wordToGuessArray;
+    }
+
+    public void onClickNextWord(View view) {
+        PlayActivity.this.recreate();
     }
 }

@@ -1,5 +1,8 @@
 package com.example.devinetproject.bo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -23,7 +26,7 @@ import androidx.room.PrimaryKey;
                 childColumns = "idLevel",
                 onDelete = ForeignKey.CASCADE)
 })
-public class Word {
+public class Word implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "idWord")
     private int id;
@@ -44,6 +47,27 @@ public class Word {
         this.idCategory = idCategory;
         this.idLevel = idLevel;
     }
+
+    protected Word(Parcel in) {
+        id = in.readInt();
+        image = in.readString();
+        guessWord = in.readString();
+        proposal = in.readString();
+        idCategory = in.readInt();
+        idLevel = in.readInt();
+    }
+
+    public static final Creator<Word> CREATOR = new Creator<Word>() {
+        @Override
+        public Word createFromParcel(Parcel in) {
+            return new Word(in);
+        }
+
+        @Override
+        public Word[] newArray(int size) {
+            return new Word[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -103,5 +127,20 @@ public class Word {
                 ", idCategory=" + idCategory +
                 ", idLevel=" + idLevel +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(image);
+        parcel.writeString(guessWord);
+        parcel.writeString(proposal);
+        parcel.writeInt(idCategory);
+        parcel.writeInt(idLevel);
     }
 }

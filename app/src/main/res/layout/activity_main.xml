@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_main_submit"
         android:paddingTop="50dp"
         android:paddingBottom="50dp"
-        android:onClick="onClickSubmit"
+        android:onClick="onClickMyResults"
         />
 
     <Button

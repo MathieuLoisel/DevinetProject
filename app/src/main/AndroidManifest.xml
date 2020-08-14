@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".activity.MyResultsActivity" />
         <activity android:name=".activity.MyResultsGeneralActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".activity.SubmitActivity" />
+        <activity android:name=".activity.SubmitActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
         <activity android:name=".activity.SettingsActivity" android:theme="@style/Theme.AppCompat.NoActionBar"  />
         <activity android:name=".activity.AboutUsActivity" android:theme="@style/Theme.AppCompat.NoActionBar" />
