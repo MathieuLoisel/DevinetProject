@@ -149,7 +149,6 @@ public class PlayActivity extends AppCompatActivity {
         ibtnErase.setMaxHeight(120);
         ibtnErase.setImageResource(R.drawable.ic_baseline_delete_24);
         ibtnErase.setOnClickListener(new View.OnClickListener() {
-            //TODO:OnClick pour le bouton erase. viewIdsTextViewEmpty setText(""). viewIdsTextViewFull setVisibility(VISIBLE)
             @Override
             public void onClick(View view) {
                 for (int i = 0; i < viewIdsTextViewEmpty.length - LAST_ITEM_BIN; i++) {

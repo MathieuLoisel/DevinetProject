@@ -24,6 +24,7 @@ import com.example.devinetproject.bo.Category;
 import com.example.devinetproject.bo.Level;
 import com.example.devinetproject.vm.CategoryVm;
 import com.example.devinetproject.vm.LevelVm;
+import com.example.devinetproject.vm.WordVm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +75,10 @@ public class SelectLevelActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Level> levels) {
                 levelList.setAdapter(new ListLevelAdapter(SelectLevelActivity.this,
-                        R.layout.style_ligne_select_level_layout, levels)
+                        R.layout.style_ligne_select_level_layout,
+                        levels,
+                        new ViewModelProvider((SelectLevelActivity.this)).get(WordVm.class),
+                        SelectLevelActivity.this)
                 );
             }
         });
